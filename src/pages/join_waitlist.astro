@@ -1,0 +1,259 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Join Waitlist - Punzisa">
+    <Header />  
+    <section class="waitlist-hero">
+        <div class="container">
+            <h1>Join the Waitlist</h1>
+            <p class="lead-text">Be among the first to experience the future of education management in Zambia</p>
+        </div>
+    </section>
+
+    <section class="waitlist-form">
+        <div class="container">
+            <div class="form-wrapper">
+                <form id="waitlistForm">
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input 
+                            type="text" 
+                            id="fullName" 
+                            name="fullName" 
+                            required 
+                            placeholder="Enter your full name"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            required 
+                            placeholder="Enter your email address"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="school">School Name</label>
+                        <input 
+                            type="text" 
+                            id="school" 
+                            name="school" 
+                            required 
+                            placeholder="Enter your school name"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="role">Role</label>
+                        <select id="role" name="role" required>
+                            <option value="">Select your role</option>
+                            <option value="teacher">Teacher</option>
+                            <option value="administrator">Administrator</option>
+                            <option value="principal">Principal</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <input 
+                                type="checkbox" 
+                                name="agreement" 
+                                required
+                            >
+                            I agree to receive updates about Punzisa
+                        </label>
+                    </div>
+
+                    <div class="form-submit">
+                        <button type="submit" id="submitBtn">Join Waitlist</button>
+                    </div>
+
+                    <div id="formMessage" class="form-message"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <Footer />
+</Layout>
+
+<script>
+   
+
+    const waitlistForm = document.getElementById('waitlistForm');
+    const formMessage = document.getElementById('formMessage');
+    const submitBtn = document.getElementById('submitBtn');
+
+    waitlistForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        // Disable submit button and show loading state
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Submitting...';
+        
+        const formData = new FormData(waitlistForm);
+        const data = Object.fromEntries(formData.entries());
+        
+        try {
+            // Add timestamp
+            data.timestamp = new Date();
+            
+            // Add to Firestore
+            await addDoc(collection(db, 'waitlist'), data);
+            
+            // Show success message
+            formMessage.textContent = 'Thank you for joining our waitlist!';
+            formMessage.className = 'form-message success';
+            waitlistForm.reset();
+        } catch (error) {
+            // Show error message
+            formMessage.textContent = 'An error occurred. Please try again.';
+            formMessage.className = 'form-message error';
+            console.error('Error:', error);
+        } finally {
+            // Re-enable submit button
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Join Waitlist';
+        }
+    });
+</script>
+
+<style lang="scss">
+    .waitlist-hero {
+        background-color: var(--brief);
+        padding: 80px 0 40px;
+        text-align: center;
+
+        h1 {
+            font-size: 3.6rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .lead-text {
+            font-size: 1.8rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    }
+
+    .waitlist-form {
+        padding: 60px 0;
+        
+        .form-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+
+            label {
+                display: block;
+                margin-bottom: 8px;
+                color: #333;
+                font-size: 1.6rem;
+            }
+
+            input[type="text"],
+            input[type="email"],
+            select {
+                width: 100%;
+                padding: 12px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                font-size: 1.6rem;
+                transition: border-color 0.3s ease;
+
+                &:focus {
+                    outline: none;
+                    border-color: var(--accent);
+                }
+            }
+
+            input[type="checkbox"] {
+                margin-right: 8px;
+            }
+        }
+
+        .form-submit {
+            margin-top: 30px;
+
+            button {
+                width: 100%;
+                padding: 15px;
+                background-color: var(--accent);
+                color: #fff;
+                border: none;
+                border-radius: 4px;
+                font-size: 1.6rem;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+
+                &:hover {
+                    background-color: var(--accent);
+                }
+
+                &:disabled {
+                    background-color: #ccc;
+                    cursor: not-allowed;
+                }
+            }
+        }
+
+        .form-message {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 4px;
+            text-align: center;
+            font-size: 1.6rem;
+
+            &.success {
+                background-color: #d4edda;
+                color: #155724;
+            }
+
+            &.error {
+                background-color: #f8d7da;
+                color: #721c24;
+            }
+        }
+    }
+
+    // Responsive adjustments
+    @media (max-width: 700px) {
+        .waitlist-hero {
+            padding: 60px 0 30px;
+
+            h1 {
+                font-size: 2.8rem;
+            }
+
+            .lead-text {
+                font-size: 1.6rem;
+            }
+        }
+
+        .waitlist-form {
+            padding: 30px 15px;
+
+            .form-wrapper {
+                padding: 20px;
+            }
+        }
+    }
+</style>

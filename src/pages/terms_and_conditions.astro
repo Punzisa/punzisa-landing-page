@@ -1,0 +1,176 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Terms and Conditions - Punzisa">
+    <Header />
+    <section class="terms-hero">
+        <div class="container">
+            <h1>Terms and Conditions</h1>
+            <p class="last-updated">Last updated: {new Date().toLocaleDateString('en-US', {month: 'long', day: 'numeric', year: 'numeric'})}</p>
+        </div>
+    </section>
+
+    <section class="terms-content">
+        <div class="container">
+            <div class="terms-section">
+                <h2>1. Agreement to Terms</h2>
+                <p>By accessing and using Punzisa's services, you agree to be bound by these Terms and Conditions. If you disagree with any part of these terms, you may not access our services.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>2. Use License</h2>
+                <p>Permission is granted to temporarily access Punzisa's services for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:</p>
+                <ul>
+                    <li>Modify or copy the materials</li>
+                    <li>Use the materials for any commercial purpose</li>
+                    <li>Attempt to decompile or reverse engineer any software contained in Punzisa</li>
+                    <li>Remove any copyright or other proprietary notations</li>
+                    <li>Transfer the materials to another person or "mirror" the materials on any other server</li>
+                </ul>
+            </div>
+
+            <div class="terms-section">
+                <h2>3. User Account</h2>
+                <p>To access certain features of Punzisa, you may be required to create an account. You are responsible for:</p>
+                <ul>
+                    <li>Maintaining the confidentiality of your account</li>
+                    <li>All activities that occur under your account</li>
+                    <li>Notifying us immediately of any unauthorized use</li>
+                </ul>
+            </div>
+
+            <div class="terms-section">
+                <h2>4. Privacy Policy</h2>
+                <p>Your use of Punzisa is also governed by our Privacy Policy. Please review our Privacy Policy, which also governs the Site and informs users of our data collection practices.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>5. Disclaimer</h2>
+                <p>Punzisa's services are provided "as is". We make no warranties, expressed or implied, and hereby disclaim and negate all other warranties, including without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.</p>
+            </div>
+
+            <div class="terms-section">
+                <h2>6. Contact Information</h2>
+                <p>If you have any questions about these Terms, please contact us at:</p>
+                <div class="contact-info">
+                    <p>Email: support@punzisa.com</p>
+                    <p>Address: [Your Business Address]</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <Footer />
+</Layout>
+
+<style lang="scss">
+    .terms-hero {
+        background-color: var(--brief);
+        padding: 80px 0 40px;
+        text-align: center;
+
+        h1 {
+            font-size: 3.6rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .last-updated {
+            color: #666;
+            font-size: 1.6rem;
+        }
+    }
+
+    .terms-content {
+        padding: 60px 0;
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .terms-section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+
+            h2 {
+                color: #333;
+                font-size: 2.4rem;
+                margin-bottom: 20px;
+                padding-bottom: 10px;
+                border-bottom: 2px solid var(--tenary);
+            }
+
+            p {
+                color: #666;
+                font-size: 1.6rem;
+                line-height: 1.6;
+                margin-bottom: 15px;
+            }
+
+            ul {
+                list-style-type: disc;
+                padding-left: 20px;
+                margin: 15px 0;
+
+                li {
+                    color: #666;
+                    font-size: 1.6rem;
+                    line-height: 1.6;
+                    margin-bottom: 10px;
+                }
+            }
+
+            .contact-info {
+                background: #f8f9fa;
+                padding: 20px;
+                border-radius: 6px;
+                margin-top: 15px;
+
+                p {
+                    margin-bottom: 10px;
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    // Responsive adjustments
+    @media (max-width: 700px) {
+        .terms-hero {
+            padding: 60px 0 30px;
+
+            h1 {
+                font-size: 2.8rem;
+            }
+
+            .last-updated {
+                font-size: 1.4rem;
+            }
+        }
+
+        .terms-content {
+            padding: 30px 0;
+
+            .terms-section {
+                padding: 15px;
+                margin-bottom: 20px;
+
+                h2 {
+                    font-size: 2rem;
+                }
+
+                p, ul li {
+                    font-size: 1.4rem;
+                }
+            }
+        }
+    }
+</style>
