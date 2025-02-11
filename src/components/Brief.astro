@@ -1,176 +1,197 @@
 ---
-import VectorOne from '../assets/ui-one.svg'
-import VectorTwo from '../assets/ui-two.svg'
-import VectorThree from '../assets/ui-three.svg'
 
-import Check from '../assets/check.svg'
-import Bolt from '../assets/bolt.svg'
-import Money from '../assets/money.svg'
-import Wallet from '../assets/wallet.svg'
-import Secure from '../assets/lock.svg'
-
+import Bolt from "../assets/bolt.svg";
+import TeacherAppImage from "../assets/teacher-app.png";
 ---
 
-
 <section class="product-brief" id="features">
-    <div class="container">
+  <div class="container">
+    <!-- Feature Two -->
+    <div class="row product-brief-items">
+      <div class="brief-media center one-half column">
+        <img
+          src={TeacherAppImage}
+          alt="Teacher App Interface"
+          class="md-width"
+        />
+      </div>
 
+      <div class="brief-tab one-half column">
+        <h3 class="h2-title">Streamline Your Teaching.</h3>
+        <p class="m-paragraph m-margin">
+          Our mobile app empowers Zambian teachers to create detailed lesson
+          plans, record student work, and build comprehensive schemes of
+          work—all digitally. Say goodbye to tedious paperwork and hello to more
+          time for teaching.
+        </p>
 
-        <!-- Feature Two -->
-        <div class="row product-brief-items">
-            <div class="brief-media center one-half column">
-                <img src={VectorTwo} class="md-width">
+        <div class="brief-items">
+          <div class="row m-margin">
+            <div class="one-half column feature-grid">
+              <img src={Bolt} alt="Effortless Lesson Planning" />
+              <p class="s-paragraph">
+                Draft and customize lesson plans in minutes.
+              </p>
             </div>
-
-            <div class="brief-tab one-half column">
-                <h3 class="h2-title">Better, together.</h3>
-                <p class="m-paragraph m-margin">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.</p>
-
-                <div class="brief-items">
-                 <div class="row m-margin">
-                    <div class="one-half column feature-grid">
-                        <img src={Bolt} alt="Fast connect">
-                        <p class="s-paragraph">Lorem ipsum dolor sit amet, consectetur.</p>
-                    </div>
-                    <div class="one-half column feature-grid">
-                        <img src={Money} alt="Money transfer">
-                        <p class="s-paragraph">Lorem ipsum dolor sit amet, consectetur.</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="one-half column feature-grid">
-                        <img src={Wallet} alt="Digital wallet">
-                        <p class="s-paragraph">Lorem ipsum dolor sit amet, consectetur.</p>
-                    </div>
-                    <div class="one-half column feature-grid">
-                        <img src={Secure} alt="Secure connection">
-                        <p class="s-paragraph">Lorem ipsum dolor sit amet, consectetur.</p>
-                    </div>
-                </div>
-              </div>
+            <div class="one-half column feature-grid">
+              <img src={Bolt} alt="Digital Records" />
+              <p class="s-paragraph">
+                Keep accurate digital records of student work.
+              </p>
             </div>
-        </div>
-   
-        <!-- Feature One -->
-        <div class="row product-brief-items">
-            <div class="brief-tab one-half column">
-                <h3 class="h2-title">Better, together.</h3>
-                <p class="m-paragraph m-margin">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.</p>
-
-
-               <div class="brief-items">
-                 <div class="row m-margin">
-                    <div class="one-half column feature-grid">
-                        <img src={Bolt} alt="Fast connect">
-                        <p class="s-paragraph">Lorem ipsum dolor sit amet, consectetur.</p>
-                    </div>
-                    <div class="one-half column feature-grid">
-                        <img src={Money} alt="Money transfer">
-                        <p class="s-paragraph">Lorem ipsum dolor sit amet, consectetur.</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="one-half column feature-grid">
-                        <img src={Wallet} alt="Digital wallet">
-                        <p class="s-paragraph">Lorem ipsum dolor sit amet, consectetur.</p>
-                    </div>
-                    <div class="one-half column feature-grid">
-                        <img src={Secure} alt="Secure connection">
-                        <p class="s-paragraph">Lorem ipsum dolor sit amet, consectetur.</p>
-                    </div>
-                </div>
-              </div>
+          </div>
+          <div class="row">
+            <div class="one-half column feature-grid">
+              <img src={Bolt} alt="Comprehensive Schemes" />
+              <p class="s-paragraph">
+                Build and manage schemes of work with ease.
+              </p>
             </div>
-
-            <div class="brief-media center one-half column">
-                <img src={VectorOne} class="md-width">
-            </div>
-        </div>
-
-
-
-     <!-- Feature One -->
-      <div class="row product-brief-items">
-
-        <div class="brief-media center one-half column">
-            <img src={VectorThree} class="md-width">
-        </div>
-        
-         <div class="brief-tab one-half column">
-            <h3 class="h2-title">Better, together.</h3>
-            <p class="m-paragraph m-margin">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.</p>
-
-
-            <div class="brief-items">
-                <div class="row m-margin">
-                <div class="one-half column feature-grid">
-                    <img src={Bolt} alt="Fast connect">
-                    <p class="s-paragraph">Lorem ipsum dolor sit amet, consectetur.</p>
-                </div>
-                <div class="one-half column feature-grid">
-                    <img src={Money} alt="Money transfer">
-                    <p class="s-paragraph">Lorem ipsum dolor sit amet, consectetur.</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="one-half column feature-grid">
-                    <img src={Wallet} alt="Digital wallet">
-                    <p class="s-paragraph">Lorem ipsum dolor sit amet, consectetur.</p>
-                </div>
-                <div class="one-half column feature-grid">
-                    <img src={Secure} alt="Secure connection">
-                    <p class="s-paragraph">Lorem ipsum dolor sit amet, consectetur.</p>
-                </div>
+            <div class="one-half column feature-grid">
+              <img src={Bolt} alt="Easy Resource Sharing" />
+              <p class="s-paragraph">
+                Share your teaching resources with colleagues instantly.
+              </p>
             </div>
           </div>
         </div>
+      </div>
+    </div>
 
+    <!-- Feature One -->
+    <div class="row product-brief-items">
+      <div class="brief-tab one-half column">
+        <h3 class="h2-title">Innovative Tools for Modern Classrooms</h3>
+        <p class="m-paragraph m-margin">
+          Embrace the future of education with cutting-edge tools designed to
+          simplify classroom management and boost teaching effectiveness.
+          Discover features that keep you organized while inspiring your
+          students.
+        </p>
+
+        <div class="brief-items">
+          <div class="row m-margin">
+            <div class="one-half column feature-grid">
+              <img src={Bolt} alt="Create Lesson Plans" />
+              <p class="s-paragraph">
+                Easily design and customize lesson plans.
+              </p>
+            </div>
+            <div class="one-half column feature-grid">
+              <img src={Bolt} alt="Record Class Work" />
+              <p class="s-paragraph">
+                Keep accurate records of class activities.
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="one-half column feature-grid">
+              <img src={Bolt} alt="Schemes of Work" />
+              <p class="s-paragraph">
+                Build comprehensive schemes of work effortlessly.
+              </p>
+            </div>
+            <div class="one-half column feature-grid">
+              <img src={Bolt} alt="Share with Colleagues" />
+              <p class="s-paragraph">
+                Instantly share your resources with fellow educators.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
 
+      <div class="brief-media center one-half column">
+        <img src={TeacherAppImage} class="md-width" alt="Mobile App Preview" />
+      </div>
     </div>
- </section>
 
+    <!-- Feature One -->
+    <div class="row product-brief-items">
+      <div class="brief-media center one-half column">
+        <img src={TeacherAppImage} class="md-width" />
+      </div>
 
- <style lang="scss">
+      <div class="brief-tab one-half column">
+        <h3 class="h2-title">AI-Powered</h3>
+        <p class="m-paragraph m-margin">
+          Leveraging the power of AI so you can worry less
+        </p>
 
-.product-brief{
-  background-color: var(--tenary);
-  .hero-brand{
-    padding-bottom: 50px;
-    .brands{
-      margin-top: 15px;
+        <div class="brief-items">
+          <div class="row m-margin">
+            <div class="one-half column feature-grid">
+              <img src={Bolt} alt="Fast connect" />
+              <p class="s-paragraph">
+                Type less, and write more
+              </p>
+            </div>
+            <div class="one-half column feature-grid">
+              <img src={Bolt} alt="Money transfer" />
+              <p class="s-paragraph">
+                Say it better with AI as a helping hand
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="one-half column feature-grid">
+              <img src={Bolt} alt="Digital wallet" />
+              <p class="s-paragraph">
+                Power of LLM at your figure tips
+              </p>
+            </div>
+            <div class="one-half column feature-grid">
+              <img src={Bolt} alt="Secure connection" />
+              <p class="s-paragraph">
+                Plan with incredible speed
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  .product-brief {
+    background-color: var(--brief);
+    .hero-brand {
+      padding-bottom: 50px;
+      .brands {
+        margin-top: 15px;
+      }
     }
-  }
-  .product-brief-items{
-    margin-bottom: 100px;
-    .brief-tab{
-      padding-top: 50px;
+    .product-brief-items {
+      margin-bottom: 100px;
+      .brief-tab {
+        padding-top: 50px;
+      }
     }
-  }
 
-  .feature-grid{
-    display: flex;
-    p{
-      margin: 0 0 0 10px;
+    .feature-grid {
+      display: flex;
+      p {
+        margin: 0 0 0 10px;
+      }
+      img {
+        width: 25px;
+        margin-top: -10px;
+      }
     }
-    img{
-      width: 25px;
-      margin-top: -10px;
+
+    .brief-media {
+      height: 340px;
+      position: relative;
+      overflow: hidden;
+      background-color: #f2f5f9;
+      padding-top: 40px;
     }
-  }
 
-  .brief-media{
-    height: 340px;
-    position: relative;
-    overflow: hidden;
-    background-color: #f2f5f9;
-    padding-top: 40px;
-  }
-
-  @media (max-width:700px) {
-    .brief-tab{
+    @media (max-width: 700px) {
+      .brief-tab {
         margin-left: 20px;
+      }
     }
   }
-}
- </style>
+</style>
