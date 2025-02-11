@@ -1,35 +1,33 @@
-# Astro Idol
+# Punzisa.com
 
-Landing page template for mirco SaaS products
-
-### Live demo
-(https://idol.indiebold.com/)
-
-### Upgrade to Astrodol Pro version
-(https://idolpro.indiebold.com/)
+Landing page for the Punzisa project
+### Live demo(TBA)
+(https://www.punzisa.com/)
 
 
 ## 🚀 Project Structure
 
-Inside of your Astro project, you'll see the following folders and files:
+Inside this Astro project, you'll see the following folders and files:
 
 ```
 /
 ├── public/
 │   └── favicon.svg
 ├── src/
-    ├── assets/
+│   ├── assets/
 │   ├── components/
 │   │   └── Brief.astro
-        └── Customer.astro
-        └── Footer.astro
-        └── Header.astro
-        └── Hero.astro
-        └── Pricing.astro
+│   │   └── Customer.astro
+│   │   └── Footer.astro
+│   │   └── Header.astro
+│   │   └── Hero.astro
 │   ├── layouts/
 │   │   └── Layout.astro
 │   └── pages/
+│       └── about.astro
 │       └── index.astro
+│       └── join_waitlist.astro
+│       └── terms_and_conditions.astro
 └── package.json
 ```
 
@@ -38,8 +36,12 @@ Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page
 Any static assets, like images, can be placed in the `public/` directory.
 
 ## Preview
-![basics](./src/demo/idol-thumbnail.png)
+Hero
 
+![hero section](/demo/hero.png)
+2. Customers
+
+![customers section](/demo/customer.png)
 
 ## 🧞 Commands
 
