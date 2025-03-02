@@ -1,0 +1,21 @@
+<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Radial gradient for shading -->
+    <radialGradient id="shadeGradient" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#0079FF" />
+      <stop offset="100%" stop-color="#005BB5" />
+    </radialGradient>
+    <!-- Linear gradient for texture -->
+    <linearGradient id="textureGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0079FF" />
+      <stop offset="50%" stop-color="#0066CC" />
+      <stop offset="100%" stop-color="#0079FF" />
+    </linearGradient>
+  </defs>
+  <!-- Bullet point circle -->
+  <circle cx="12" cy="12" r="10" fill="url(#shadeGradient)" />
+  <!-- Texture overlay -->
+  <circle cx="12" cy="12" r="9" fill="url(#textureGradient)" fill-opacity="0.6" />
+  <!-- Highlight for 3D effect -->
+  <circle cx="8" cy="8" r="5" fill="#FFFFFF" fill-opacity="0.2" />
+</svg>
