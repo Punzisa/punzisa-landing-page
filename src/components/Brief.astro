@@ -109,7 +109,8 @@ import HomeScreenScreenshot from "../assets/home_screen_screenshot.png";
     </div>
 
     <!-- Feature One -->
-    <div class="row product-brief-items">
+     <!-- TODO: remove 'hidden' once feature becomes available -->
+    <div class="row product-brief-items hidden">
       <div class="brief-media center one-half column">
         <img src={TeacherAppImage.src} class="md-width" />
       </div>
@@ -188,6 +189,10 @@ import HomeScreenScreenshot from "../assets/home_screen_screenshot.png";
       overflow: hidden;
       background-color: #f2f5f9;
       padding-top: 20px;
+    }
+
+    .hidden {
+      display: none;
     }
 
     @media (max-width: 700px) {
