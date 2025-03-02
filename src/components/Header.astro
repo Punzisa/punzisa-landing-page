@@ -1,56 +1,211 @@
 ---
-import Logo from '../assets/logo.svg'
+import Logo from "../assets/logo.svg";
 ---
 
 <header class="nav">
-    <div class="container row">
-     <div class="nav-logo one-third column">
-         <a href="/#" class="logo-link">
-             <img src={Logo.src} alt="Brand logo">
-         </a>
-     </div>
-     <nav class="one-third column">
-         <ul class="center flex">
-             <li><a href="/#features">Features</a></li>
-      
-             <li><a href="/#customers">Customers</a></li>
-         </ul>
-     </nav>
-     <div class="nav-cta one-third column">
-         <a href="/join_waitlist" class="button button-primary">Join Waitlist</a>
-     </div>
+  <div class="container">
+    <div class="nav-logo">
+      <a href="/#" class="logo-link">
+        <img src={Logo.src} alt="Brand logo" />
+      </a>
     </div>
- </header>
 
+    <button
+      class="mobile-nav-toggle"
+      aria-controls="primary-navigation"
+      aria-expanded="false"
+    >
+      <span class="sr-only">Menu</span>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </button>
 
- <style lang="scss">
+    <nav id="primary-navigation" class="primary-navigation">
+      <ul class="nav-list">
+        <li><a href="/#features">Features</a></li>
+        <li><a href="/#customers">Customers</a></li>
+        <li class="mobile-only">
+          <a href="/join_waitlist" class="button button-primary"
+            >Join Waitlist</a
+          >
+        </li>
+      </ul>
+    </nav>
 
-.nav{
-    padding: 15px 0;
-    li{
-      list-style: none;
-      margin-top: 7px;
+    <div class="nav-cta desktop-only">
+      <a href="/join_waitlist" class="button button-primary">Join Waitlist</a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const navToggle = document.querySelector(".mobile-nav-toggle");
+  const primaryNav = document.querySelector(".primary-navigation");
+  const hamburger = document.querySelector(".hamburger");
+
+  navToggle?.addEventListener("click", (e) => {
+    primaryNav?.classList.toggle("active");
+    hamburger?.classList.toggle("active");
+    const isExpanded = navToggle.getAttribute("aria-expanded") === "true";
+    navToggle.setAttribute("aria-expanded", isExpanded ? "true" : "false");
+  });
+
+  const navList = document.querySelector(".nav-list");
+  navList?.addEventListener("click", (e) => {
+    if (e.target instanceof HTMLAnchorElement) {
+      primaryNav?.classList.remove("active");
+      hamburger?.classList.remove("active");
+      navToggle?.setAttribute("aria-expanded", "false");
     }
-    .nav-cta{
-      text-align: right;
+  });
+</script>
+
+<style lang="scss">
+  .nav {
+    padding: 0px 0;
+    background: white;
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 4rem;
     }
-    a:not(.button):not(.logo-link){
-      color: #111;
-      padding: 0 20px;
-      text-decoration: none;
-    }
-    .logo-link img{
+
+    .logo-link img {
       width: 90px;
       margin-top: 5px;
     }
-    @media (max-width:700px) {
-      nav{
-        display: none;
-      }
-      .nav-cta{
-        position: absolute;
-        right: 20px;
+
+    .nav-list {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    a:not(.button):not(.logo-link) {
+      color: #111;
+      padding: 0 20px;
+      text-decoration: none;
+
+      &:hover {
+        color: #666;
       }
     }
-  } 
- </style>
+
+    .mobile-nav-toggle {
+      display: none;
+    }
+
+    .mobile-only {
+      display: none;
+    }
+
+    .hamburger {
+      width: 24px;
+      height: 20px;
+      position: relative;
+      cursor: pointer;
+
+      span {
+        display: block;
+        position: absolute;
+        height: 2px;
+        width: 100%;
+        background: #333;
+        transition: 0.25s ease-in-out;
+
+        &:nth-child(1) {
+          top: 0;
+        }
+        &:nth-child(2) {
+          top: 9px;
+        }
+        &:nth-child(3) {
+          top: 18px;
+        }
+      }
+
+      &.active {
+        span {
+          &:nth-child(1) {
+            top: 9px;
+            transform: rotate(45deg);
+          }
+          &:nth-child(2) {
+            opacity: 0;
+          }
+          &:nth-child(3) {
+            top: 9px;
+            transform: rotate(-45deg);
+          }
+        }
+      }
+    }
+
+    @media (max-width: 768px) {
+      .logo-link img {
+        width: 72px;
+      }
+
+      .mobile-nav-toggle {
+        display: block;
+        background: none;
+        border: none;
+        padding: 0;
+        position: absolute;
+        top: 2rem; /* Distance from top */
+        right: 2rem; /* Distance from right */
+        cursor: pointer;
+        z-index: 9999;
+      }
+
+      .primary-navigation {
+        position: fixed;
+        inset: 0 0 0 30%;
+        background: rgb(239, 238, 238);
+        padding: min(30vh, 10rem) 2em;
+        transform: translateX(100%);
+        transition: transform 350ms ease-out;
+        z-index: 9998;
+
+        &.active {
+          transform: translateX(0);
+        }
+      }
+
+      .nav-list {
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .desktop-only {
+        display: none;
+      }
+
+      .mobile-only {
+        display: block;
+      }
+    }
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>
