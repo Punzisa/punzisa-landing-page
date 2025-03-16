@@ -27,39 +27,80 @@ if (userId) {
     <Header />
     <section class="delete-hero">
         <div class="container">
-            <h1>Delete Account</h1>
+            <h1>Account Deletion</h1>
         </div>
     </section>
 
     <section class="delete-content">
         <div class="container">
-            <div class="delete-section">
-                {!userId ? (
-                    <div class="error-message">
-                        <h2>Invalid Request</h2>
-                        <p>No user ID provided. Please try again through the mobile app.</p>
+            {userId && (
+                <div class="delete-section">
+                    {error ? (
+                        <div class="error-message">
+                            <h2>Error</h2>
+                            <p>{error}</p>
+                        </div>
+                    ) : success ? (
+                        <div class="success-message">
+                            <h2>Account Deleted Successfully</h2>
+                            <p>Your account has been permanently deleted. Thank you for using Punzisa.</p>
+                        </div>
+                    ) : (
+                        <div class="confirmation-message">
+                            <h2>Confirm Account Deletion</h2>
+                            <p>This action cannot be undone. All your data will be permanently deleted as described above.</p>
+                            <form method="POST">
+                                <input type="hidden" name="userId" value={userId} />
+                                <button type="submit" class="delete-btn">Yes, Delete My Account</button>
+                            </form>
+                        </div>
+                    )}
+                </div>
+            )}
+            <div class="delete-section info-section">
+                <h2>How to Delete Your Punzisa Account</h2>
+                <div class="deletion-steps">
+                    <h3>Option 1: Delete through the App</h3>
+                    <ol>
+                        <li>Open the Punzisa app</li>
+                        <li>Go to Settings</li>
+                        <li>Select "Account"</li>
+                        <li>Tap "Delete Account"</li>
+                        <li>Follow the confirmation steps</li>
+                    </ol>
+
+                    <h3>Option 2: Request Deletion via Email</h3>
+                    <ol>
+                        <li>Send an email to hello@punzisa.com</li>
+                        <li>Use the subject line "Account Deletion Request"</li>
+                        <li>Include your registered email address</li>
+                        <li>We will process your request within 7 business days</li>
+                    </ol>
+                </div>
+
+                <div class="data-handling">
+                    <h3>Data Deletion Information</h3>
+                    <div class="data-section">
+                        <h4>Data That Will Be Deleted:</h4>
+                        <ul>
+                            <li>Your profile information (name, email, salutation)</li>
+                            <li>School and teaching institution details</li>
+                            <li>Account preferences and settings</li>
+                        </ul>
                     </div>
-                ) : error ? (
-                    <div class="error-message">
-                        <h2>Error</h2>
-                        <p>{error}</p>
+
+                    <div class="data-section">
+                        <h4>Data Retention:</h4>
+                        <ul>
+                            <li>Account deletion is permanent and cannot be undone</li>
+                            <li>Backup copies may be retained for up to 30 days</li>
+                            <li>Some information may be retained for legal compliance (up to 90 days)</li>
+                        </ul>
                     </div>
-                ) : success ? (
-                    <div class="success-message">
-                        <h2>Account Deleted Successfully</h2>
-                        <p>Your account has been permanently deleted. Thank you for using Punzisa.</p>
-                    </div>
-                ) : (
-                    <div class="confirmation-message">
-                        <h2>Are you sure?</h2>
-                        <p>This action cannot be undone. All your data will be permanently deleted.</p>
-                        <form method="POST">
-                            <input type="hidden" name="userId" value={userId} />
-                            <button type="submit" class="delete-btn">Yes, Delete My Account</button>
-                        </form>
-                    </div>
-                )}
+                </div>
             </div>
+
+            
         </div>
     </section>
     <Footer />
@@ -92,12 +133,23 @@ if (userId) {
             background: #fff;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            text-align: center;
 
             h2 {
                 color: #333;
                 font-size: 2.4rem;
                 margin-bottom: 20px;
+            }
+
+            h3 {
+                color: #444;
+                font-size: 2rem;
+                margin: 25px 0 15px;
+            }
+
+            h4 {
+                color: #555;
+                font-size: 1.8rem;
+                margin: 20px 0 10px;
             }
 
             p {
@@ -106,30 +158,75 @@ if (userId) {
                 line-height: 1.6;
                 margin-bottom: 25px;
             }
+        }
 
-            .delete-btn {
-                background-color: #dc3545;
-                color: white;
-                border: none;
-                padding: 12px 24px;
-                border-radius: 6px;
-                font-size: 1.6rem;
-                cursor: pointer;
-                transition: background-color 0.3s ease;
+        .info-section {
+            text-align: left;
 
-                &:hover {
-                    background-color: #c82333;
+            .deletion-steps {
+                margin-bottom: 30px;
+
+                ol {
+                    list-style-type: decimal;
+                    margin-left: 20px;
+                    margin-bottom: 25px;
+
+                    li {
+                        color: #666;
+                        font-size: 1.6rem;
+                        line-height: 1.6;
+                        margin-bottom: 10px;
+                    }
+                }
+            }
+
+            .data-handling {
+                .data-section {
+                    margin-bottom: 20px;
+
+                    ul {
+                        list-style-type: disc;
+                        margin-left: 20px;
+
+                        li {
+                            color: #666;
+                            font-size: 1.6rem;
+                            line-height: 1.6;
+                            margin-bottom: 10px;
+                        }
+                    }
                 }
             }
         }
 
+        .confirmation-message {
+            text-align: center;
+        }
+
+        .delete-btn {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 1.6rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: #c82333;
+            }
+        }
+
         .success-message {
+            text-align: center;
             h2 {
                 color: #28a745;
             }
         }
 
         .error-message {
+            text-align: center;
             h2 {
                 color: #dc3545;
             }
@@ -157,7 +254,15 @@ if (userId) {
                     font-size: 2rem;
                 }
 
-                p {
+                h3 {
+                    font-size: 1.8rem;
+                }
+
+                h4 {
+                    font-size: 1.6rem;
+                }
+
+                p, .deletion-steps ol li, .data-handling ul li {
                     font-size: 1.4rem;
                 }
 
