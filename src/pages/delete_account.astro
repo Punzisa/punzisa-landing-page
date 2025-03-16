@@ -1,0 +1,171 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { createClerkClient } from '@clerk/backend';
+
+const clerk = createClerkClient({ 
+  secretKey: import.meta.env.CLERK_SECRET_KEY 
+});
+
+const userId = Astro.url.searchParams.get('userId');
+let error = '';
+let success = false;
+
+if (userId) {
+  try {
+    await clerk.users.deleteUser(userId);
+    success = true;
+  } catch (err) {
+    error = 'Failed to delete account. Please try again later.';
+    console.error('Error deleting user:', err);
+  }
+}
+---
+
+<Layout title="Delete Account - Punzisa">
+    <Header />
+    <section class="delete-hero">
+        <div class="container">
+            <h1>Delete Account</h1>
+        </div>
+    </section>
+
+    <section class="delete-content">
+        <div class="container">
+            <div class="delete-section">
+                {!userId ? (
+                    <div class="error-message">
+                        <h2>Invalid Request</h2>
+                        <p>No user ID provided. Please try again through the mobile app.</p>
+                    </div>
+                ) : error ? (
+                    <div class="error-message">
+                        <h2>Error</h2>
+                        <p>{error}</p>
+                    </div>
+                ) : success ? (
+                    <div class="success-message">
+                        <h2>Account Deleted Successfully</h2>
+                        <p>Your account has been permanently deleted. Thank you for using Punzisa.</p>
+                    </div>
+                ) : (
+                    <div class="confirmation-message">
+                        <h2>Are you sure?</h2>
+                        <p>This action cannot be undone. All your data will be permanently deleted.</p>
+                        <form method="POST">
+                            <input type="hidden" name="userId" value={userId} />
+                            <button type="submit" class="delete-btn">Yes, Delete My Account</button>
+                        </form>
+                    </div>
+                )}
+            </div>
+        </div>
+    </section>
+    <Footer />
+</Layout>
+
+<style lang="scss">
+    .delete-hero {
+        background-color: var(--brief);
+        padding: 80px 0 40px;
+        text-align: center;
+
+        h1 {
+            font-size: 3.6rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+    }
+
+    .delete-content {
+        padding: 60px 0;
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .delete-section {
+            margin-bottom: 40px;
+            padding: 40px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            text-align: center;
+
+            h2 {
+                color: #333;
+                font-size: 2.4rem;
+                margin-bottom: 20px;
+            }
+
+            p {
+                color: #666;
+                font-size: 1.6rem;
+                line-height: 1.6;
+                margin-bottom: 25px;
+            }
+
+            .delete-btn {
+                background-color: #dc3545;
+                color: white;
+                border: none;
+                padding: 12px 24px;
+                border-radius: 6px;
+                font-size: 1.6rem;
+                cursor: pointer;
+                transition: background-color 0.3s ease;
+
+                &:hover {
+                    background-color: #c82333;
+                }
+            }
+        }
+
+        .success-message {
+            h2 {
+                color: #28a745;
+            }
+        }
+
+        .error-message {
+            h2 {
+                color: #dc3545;
+            }
+        }
+    }
+
+    // Responsive adjustments
+    @media (max-width: 700px) {
+        .delete-hero {
+            padding: 60px 0 30px;
+
+            h1 {
+                font-size: 2.8rem;
+            }
+        }
+
+        .delete-content {
+            padding: 30px 0;
+
+            .delete-section {
+                padding: 20px;
+                margin-bottom: 20px;
+
+                h2 {
+                    font-size: 2rem;
+                }
+
+                p {
+                    font-size: 1.4rem;
+                }
+
+                .delete-btn {
+                    font-size: 1.4rem;
+                    padding: 10px 20px;
+                }
+            }
+        }
+    }
+</style>
