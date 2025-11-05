@@ -1,0 +1,52 @@
+---
+import TeacherLayout from '../../../layouts/TeacherLayout.astro';
+import recordsOfWork from '../../../data/records-of-work.json';
+import ViewWeeklyEntryModal from '../../../components/teacher/ViewWeeklyEntryModal.astro';
+import AddWeeklyEntryModal from '../../../components/teacher/AddWeeklyEntryModal.astro';
+
+const { id } = Astro.params;
+const record = recordsOfWork.find(r => r.id === parseInt(id));
+---
+
+<TeacherLayout title="Record of Work">
+  <div class="container">
+    {record ? (
+      <>
+        <h1>Record of Work for {record.subject}</h1>
+        <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#add-weekly-entry-modal">Add Weekly Entry</button>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Week</th>
+              <th>Work Covered</th>
+              <th>Resources/References</th>
+              <th>Method/Strategies</th>
+              <th>Learner's Progress</th>
+              <th>HOD Remarks</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {record.weekly_entries.map(entry => (
+              <tr>
+                <td>{entry.week}</td>
+                <td>{entry.work_covered}</td>
+                <td>{entry.resources_references}</td>
+                <td>{entry.method_strategies}</td>
+                <td>{entry.learners_progress}</td>
+                <td>{entry.hod_remarks}</td>
+                <td><button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target={`#view-entry-modal-${entry.week}`}>View</button></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        {record.weekly_entries.map(entry => (
+          <ViewWeeklyEntryModal entry={entry} modalId={`view-entry-modal-${entry.week}`} />
+        ))}
+        <AddWeeklyEntryModal recordId={record.id} />
+      </>
+    ) : (
+      <h1>Record not found</h1>
+    )}
+  </div>
+</TeacherLayout>

@@ -1,7 +1,18 @@
 import { defineConfig } from 'astro/config';
-import cloudflare from '@astrojs/cloudflare'; // Changed from '@astrojs/netlify/functions'
+import preact from '@astrojs/preact';
+import cloudflare from '@astrojs/cloudflare';
 
 export default defineConfig({
   output: 'server',
-  adapter: cloudflare()
+  adapter: cloudflare(),
+  integrations: [preact()],
+  vite: {
+    resolve: {
+      alias: {
+        react: 'preact/compat',
+        'react-dom/test-utils': 'preact/test-utils',
+        'react-dom': 'preact/compat',
+      },
+    },
+  },
 });

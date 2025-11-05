@@ -1,0 +1,22 @@
+---
+// src/components/teacher/RecordOfWorkForm.astro
+---
+<form method="POST" action="/api/records-of-work/create">
+  <div class="mb-3">
+    <label for="subject" class="form-label">Subject</label>
+    <input type="text" class="form-control" id="subject" name="subject" placeholder="e.g., History">
+  </div>
+  <div class="mb-3">
+    <label for="grade" class="form-label">Grade</label>
+    <input type="text" class="form-control" id="grade" name="grade" placeholder="e.g., Grade 11">
+  </div>
+  <div class="mb-3">
+    <label for="term" class="form-label">Term</label>
+    <input type="text" class="form-control" id="term" name="term" placeholder="e.g., Term 3">
+  </div>
+  <div class="mb-3">
+    <label for="year" class="form-label">Year</label>
+    <input type="text" class="form-control" id="year" name="year" placeholder="e.g., 2024">
+  </div>
+  <button type="submit" class="btn btn-primary">Save Record of Work</button>
+</form>

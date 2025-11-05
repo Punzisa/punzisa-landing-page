@@ -1,0 +1,19 @@
+---
+import TeacherLayout from '../../../layouts/TeacherLayout.astro';
+import LessonPlanCard from '../../../components/teacher/LessonPlanCard.astro';
+import lessonPlans from '../../../data/lesson-plans.json';
+---
+
+<TeacherLayout title="Lesson Plans">
+  <div class="container">
+    <h1>Lesson Plans</h1>
+    <a href="/teacher/lesson-plans/create" class="btn btn-primary mb-3">Create New Lesson Plan</a>
+    <div class="row">
+      {lessonPlans.map(plan => (
+        <div class="col-md-4">
+          <LessonPlanCard plan={plan} />
+        </div>
+      ))}
+    </div>
+  </div>
+</TeacherLayout>

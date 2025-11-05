@@ -1,0 +1,46 @@
+---
+export interface Props {
+  recordId: number;
+}
+const { recordId } = Astro.props;
+---
+<div class="modal fade" id="add-weekly-entry-modal" tabindex="-1" aria-labelledby="addWeeklyEntryModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addWeeklyEntryModalLabel">Add Weekly Entry</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="/api/records-of-work/add-entry">
+          <input type="hidden" name="recordId" value={recordId} />
+          <div class="mb-3">
+            <label for="week" class="form-label">Week</label>
+            <input type="number" class="form-control" id="week" name="week">
+          </div>
+          <div class="mb-3">
+            <label for="work_covered" class="form-label">Work Covered</label>
+            <textarea class="form-control" id="work_covered" name="work_covered" rows="3"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="resources_references" class="form-label">Resources/References</label>
+            <input type="text" class="form-control" id="resources_references" name="resources_references">
+          </div>
+          <div class="mb-3">
+            <label for="method_strategies" class="form-label">Method/Strategies</label>
+            <input type="text" class="form-control" id="method_strategies" name="method_strategies">
+          </div>
+          <div class="mb-3">
+            <label for="learners_progress" class="form-label">Learner's Progress</label>
+            <input type="text" class="form-control" id="learners_progress" name="learners_progress">
+          </div>
+          <div class="mb-3">
+            <label for="hod_remarks" class="form-label">HOD Remarks</label>
+            <input type="text" class="form-control" id="hod_remarks" name="hod_remarks">
+          </div>
+          <button type="submit" class="btn btn-primary">Save Entry</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

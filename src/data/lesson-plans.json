@@ -1,0 +1,86 @@
+[
+  {
+    "id": 1,
+    "date": "2024-10-28",
+    "teacher": "Mr. John Doe",
+    "class": "Grade 10A",
+    "subject": "Mathematics",
+    "title": "Algebraic Expressions",
+    "tabs": [
+      {
+        "id": "presentation",
+        "title": "Presentation",
+        "content": "<h2>Introduction to Algebraic Expressions</h2><p>This presentation will cover the basics of algebraic expressions, including variables, constants, and coefficients.</p>"
+      },
+      {
+        "id": "teaching-guide",
+        "title": "Teaching Guide",
+        "content": "<h3>Lesson Objectives:</h3><ul><li>Understand the components of an algebraic expression.</li><li>Be able to simplify basic algebraic expressions.</li></ul>"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Test Lesson Plan",
+    "subject": "Test Subject",
+    "class": "Test Class",
+    "tabs": [
+      {
+        "title": "Presentation",
+        "content": ""
+      },
+      {
+        "title": "Teaching Guide",
+        "content": ""
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Test Lesson Plan",
+    "subject": "Test Subject",
+    "class": "Test Class",
+    "tabs": [
+      {
+        "title": "Presentation",
+        "content": "<p>This is the presentation content.</p>"
+      },
+      {
+        "title": "Teaching Guide",
+        "content": "<p>This is the teaching guide content.</p>"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Test Lesson Plan",
+    "subject": "Test Subject",
+    "class": "Test Class",
+    "tabs": [
+      {
+        "title": "Presentation",
+        "content": "<p>This is the presentation content.</p>"
+      },
+      {
+        "title": "Teaching Guide",
+        "content": "<p>This is the teaching guide content.</p>"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Test Lesson Plan",
+    "subject": "Test Subject",
+    "class": "Test Class",
+    "tabs": [
+      {
+        "title": "Presentation",
+        "content": "<p>This is the presentation content.</p>"
+      },
+      {
+        "title": "Teaching Guide",
+        "content": "<p>This is the teaching guide content.</p>"
+      }
+    ]
+  }
+]

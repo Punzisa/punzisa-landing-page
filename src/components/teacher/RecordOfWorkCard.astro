@@ -1,0 +1,17 @@
+---
+import type { RecordOfWork } from '../../models/record-of-work';
+
+export interface Props {
+  record: RecordOfWork;
+}
+
+const { record } = Astro.props;
+---
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">{record.subject}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{record.grade} - {record.term} {record.year}</h6>
+    <a href={`/teacher/records-of-work/${record.id}`} class="card-link">View Details</a>
+  </div>
+</div>

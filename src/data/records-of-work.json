@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "subject": "History",
+    "grade": "Grade 11",
+    "term": "Term 3",
+    "year": "2024",
+    "weekly_entries": [
+      {
+        "week": 1,
+        "work_covered": "The French Revolution: Causes and early stages.",
+        "resources_references": "Textbook Chapter 8, Online articles",
+        "method_strategies": "Lecture, class discussion, and documentary screening.",
+        "learners_progress": "Students are grasping the main concepts well.",
+        "hod_remarks": "Good progress."
+      },
+      {
+        "week": 2,
+        "work_covered": "The Reign of Terror and its aftermath.",
+        "resources_references": "Textbook Chapter 9, Historical documents",
+        "method_strategies": "Group presentations and debates.",
+        "learners_progress": "Some students need extra help with the timeline of events.",
+        "hod_remarks": ""
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "subject": "Test Record Subject",
+    "grade": "Test Grade",
+    "term": "Test Term",
+    "year": "2025",
+    "weekly_entries": []
+  }
+]

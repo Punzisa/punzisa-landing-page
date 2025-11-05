@@ -1,0 +1,51 @@
+---
+import Editor from '../../components/Editor.jsx';
+---
+
+<form method="POST" action="/api/lesson-plans/create" id="lesson-plan-form">
+  <div class="mb-3">
+    <label for="title" class="form-label">Title</label>
+    <input type="text" class="form-control" id="title" name="title" placeholder="e.g., Introduction to Algebra">
+  </div>
+  <div class="mb-3">
+    <label for="subject" class="form-label">Subject</label>
+    <input type="text" class="form-control" id="subject" name="subject" placeholder="e.g., Mathematics">
+  </div>
+  <div class="mb-3">
+    <label for="class" class="form-label">Class</label>
+    <input type="text" class="form-control" id="class" name="class" placeholder="e.g., Grade 10A">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Presentation</label>
+    <div id="presentation-editor">
+      <Editor client:only="preact" initialData="" />
+    </div>
+    <input type="hidden" name="presentation" id="presentation-input">
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Teaching Guide</label>
+    <div id="teaching-guide-editor">
+      <Editor client:only="preact" initialData="" />
+    </div>
+    <input type="hidden" name="teaching_guide" id="teaching-guide-input">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Save Lesson Plan</button>
+</form>
+
+<script>
+  document.getElementById('lesson-plan-form').addEventListener('submit', function(event) {
+    const presentationEditor = document.querySelector('#presentation-editor .ck-editor__editable');
+    const teachingGuideEditor = document.querySelector('#teaching-guide-editor .ck-editor__editable');
+
+    if (presentationEditor) {
+      document.getElementById('presentation-input').value = presentationEditor.innerHTML;
+    }
+
+    if (teachingGuideEditor) {
+      document.getElementById('teaching-guide-input').value = teachingGuideEditor.innerHTML;
+    }
+  });
+</script>

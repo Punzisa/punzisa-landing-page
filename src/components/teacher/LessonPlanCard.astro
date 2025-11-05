@@ -1,0 +1,19 @@
+---
+import type { LessonPlan } from '../../models/lesson-plan';
+
+export interface Props {
+  plan: LessonPlan;
+}
+
+const { plan } = Astro.props;
+---
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">{plan.subject}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{plan.topic}</h6>
+    <p class="card-text"><strong>Date:</strong> {plan.date}</p>
+    <p class="card-text"><strong>Class:</strong> {plan.class}</p>
+    <a href={`/teacher/lesson-plans/${plan.id}`} class="card-link">View Details</a>
+  </div>
+</div>

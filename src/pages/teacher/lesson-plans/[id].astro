@@ -1,0 +1,69 @@
+---
+import TeacherLayout from '../../../layouts/TeacherLayout.astro';
+import lessonPlans from '../../../data/lesson-plans.json';
+import type { LessonPlan } from '../../../models/lesson-plan';
+import Editor from '../../../components/Editor.jsx';
+
+const { id } = Astro.params;
+const plan: LessonPlan | undefined = lessonPlans.find(p => p.id === parseInt(id!));
+---
+
+<TeacherLayout title={plan ? plan.title : 'Lesson Plan'}>
+  <div class="container mt-4">
+    {plan ? (
+      <>
+        <h1>{plan.title}</h1>
+        <ul class="nav nav-tabs" id="lessonTab" role="tablist">
+          {plan.tabs.map((tab, index) => (
+            <li class="nav-item" role="presentation">
+              <button class={`nav-link ${index === 0 ? 'active' : ''}`} id={`${tab.id}-tab`} data-bs-toggle="tab" data-bs-target={`#${tab.id}`} type="button" role="tab" aria-controls={tab.id} aria-selected={index === 0 ? 'true' : 'false'}>{tab.title}</button>
+            </li>
+          ))}
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="learning-objectives-tab" data-bs-toggle="tab" data-bs-target="#learning-objectives" type="button" role="tab" aria-controls="learning-objectives" aria-selected="false">Learning Objectives</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="activities-tab" data-bs-toggle="tab" data-bs-target="#activities" type="button" role="tab" aria-controls="activities" aria-selected="false">Activities</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="resources-tab" data-bs-toggle="tab" data-bs-target="#resources" type="button" role="tab" aria-controls="resources" aria-selected="false">Resources</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="assessment-tab" data-bs-toggle="tab" data-bs-target="#assessment" type="button" role="tab" aria-controls="assessment" aria-selected="false">Assessment</button>
+          </li>
+        </ul>
+        <div class="tab-content" id="lessonTabContent">
+          {plan.tabs.map((tab, index) => (
+            <div class={`tab-pane fade ${index === 0 ? 'show active' : ''}`} id={tab.id} role="tabpanel" aria-labelledby={`${tab.id}-tab`}>
+              <div class="p-3 border">
+                <Editor client:only="preact" initialData={tab.content} />
+              </div>
+            </div>
+          ))}
+          <div class="tab-pane fade" id="learning-objectives" role="tabpanel" aria-labelledby="learning-objectives-tab">
+            <div class="p-3 border">
+              <p>Not yet implemented.</p>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="activities" role="tabpanel" aria-labelledby="activities-tab">
+            <div class="p-3 border">
+              <p>Not yet implemented.</p>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="resources" role="tabpanel" aria-labelledby="resources-tab">
+            <div class="p-3 border">
+              <p>Not yet implemented.</p>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="assessment" role="tabpanel" aria-labelledby="assessment-tab">
+            <div class="p-3 border">
+              <p>Not yet implemented.</p>
+            </div>
+          </div>
+        </div>
+      </>
+    ) : (
+      <p>Lesson plan not found.</p>
+    )}
+  </div>
+</TeacherLayout>

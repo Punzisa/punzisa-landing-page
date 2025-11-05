@@ -1,0 +1,19 @@
+---
+import TeacherLayout from '../../../layouts/TeacherLayout.astro';
+import RecordOfWorkCard from '../../../components/teacher/RecordOfWorkCard.astro';
+import recordsOfWork from '../../../data/records-of-work.json';
+---
+
+<TeacherLayout title="Records of Work">
+  <div class="container">
+    <h1>Records of Work</h1>
+    <a href="/teacher/records-of-work/create" class="btn btn-primary mb-3">Create New Record of Work</a>
+    <div class="row">
+      {recordsOfWork.map(record => (
+        <div class="col-md-4">
+          <RecordOfWorkCard record={record} />
+        </div>
+      ))}
+    </div>
+  </div>
+</TeacherLayout>

@@ -1,0 +1,41 @@
+---
+export interface Props {
+  entry: {
+    week: number;
+    work_covered: string;
+    resources_references: string;
+    method_strategies: string;
+    learners_progress: string;
+    hod_remarks: string;
+  };
+  modalId: string;
+}
+const { entry, modalId } = Astro.props;
+---
+<div class="modal fade" id={modalId} tabindex="-1" aria-labelledby={`${modalId}-label`} aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id={`${modalId}-label`}>Week {entry.week}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <dl>
+          <dt>Work Covered</dt>
+          <dd>{entry.work_covered}</dd>
+          <dt>Resources/References</dt>
+          <dd>{entry.resources_references}</dd>
+          <dt>Method/Strategies</dt>
+          <dd>{entry.method_strategies}</dd>
+          <dt>Learner's Progress</dt>
+          <dd>{entry.learners_progress}</dd>
+          <dt>HOD Remarks</dt>
+          <dd>{entry.hod_remarks}</dd>
+        </dl>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

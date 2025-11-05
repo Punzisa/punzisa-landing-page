@@ -11,8 +11,12 @@
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.2.1",
+    "@astrojs/preact": "^4.1.2",
+    "@ckeditor/ckeditor5-build-classic": "^41.4.2",
+    "@ckeditor/ckeditor5-react": "^11.0.0",
     "@clerk/backend": "^1.25.2",
-    "astro": "^5.3.0"
+    "astro": "^5.3.0",
+    "preact": "^10.27.2"
   },
   "devDependencies": {
     "sass": "^1.63.6"
